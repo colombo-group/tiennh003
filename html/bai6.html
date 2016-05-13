@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bai 6</title>
+
+	<style type="text/css">
+		
+	</style>
+
+	<script type="text/javascript">
+		function add() {
+			if(isNaN(document.getElementById("number1").value)||isNaN(document.getElementById("number2").value)
+				||document.getElementById("number1").value==""||document.getElementById("number2").value=="")
+				alert("Bạn cần nhập vào các số để thực hiện phép tính");
+			else {
+				var result = parseFloat(document.getElementById("number1").value)
+						+ parseFloat(document.getElementById("number2").value);
+			document.getElementById("number3").value = result;	
+			}
+		}	
+
+		function subtract() {
+			if(isNaN(document.getElementById("number1").value)||isNaN(document.getElementById("number2").value)
+				||document.getElementById("number1").value==""||document.getElementById("number2").value=="")
+				alert("Bạn cần nhập vào các số để thực hiện phép tính");
+			else {
+				var result = parseFloat(document.getElementById("number1").value)
+						- parseFloat(document.getElementById("number2").value);
+			document.getElementById("number3").value = result;	
+			}
+		}	
+
+		
+		function multiplication() {
+			if(isNaN(document.getElementById("number1").value)||isNaN(document.getElementById("number2").value)
+				||document.getElementById("number1").value==""||document.getElementById("number2").value=="")
+				alert("Bạn cần nhập vào các số để thực hiện phép tính");
+			else {
+				var result = parseFloat(document.getElementById("number1").value)
+						* parseFloat(document.getElementById("number2").value);
+			document.getElementById("number3").value = result;	
+			}
+		}	
+
+		
+		function devision() {
+			if(isNaN(document.getElementById("number1").value)||isNaN(document.getElementById("number2").value)
+				||document.getElementById("number1").value==""||document.getElementById("number2").value=="")
+				alert("Bạn cần nhập vào các số để thực hiện phép tính");
+			else {
+					if(document.getElementById("number2").value==0)
+						alert("Số bị chia phải khác 0");
+					else {
+						var result = parseFloat(document.getElementById("number1").value)/
+						parseFloat(document.getElementById("number2").value);
+						document.getElementById("number3").value = result;	
+					}
+			}
+		}	
+
+		
+		function exponential() {
+			if(isNaN(document.getElementById("number1").value)||isNaN(document.getElementById("number2").value)
+				||document.getElementById("number1").value==""||document.getElementById("number2").value=="")
+				alert("Bạn cần nhập vào các số để thực hiện phép tính");
+			else {
+					var result = Math.pow(parseFloat(document.getElementById("number1").value), parseFloat(document.getElementById("number2").value));
+					document.getElementById("number3").value = result;
+				}
+		}	
+		
+	</script>
+	
+</head>
+<body>
+<div>
+<input id="number1"></input>
+<button onclick="add();">+</button>
+<button onclick="subtract();">-</button>
+<button onclick="multiplication();">x</button>
+<button onclick="devision();">/</button>
+<button onclick="exponential();">^</button>
+<input id="number2"></input>
+<label>=</label>
+<input id="number3"></input>
+</div>
+</body>
+</html>

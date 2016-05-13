@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bai 4</title>
+
+	<style type="text/css">	
+	</style>
+
+	<script type="text/javascript">
+		function draw() {
+			var HTML = "";
+			var x = document.getElementById("number").value;
+			if(isNaN(x)||parseInt(x)!=parseFloat(x))
+				alert("Ban can nhap vao mot so nguyen");
+			else {
+				for(i=1;i<=x;i++) {
+					for(j=i;j>=1;j--)
+						HTML += j%10+" ";
+					HTML +="<br>";
+						/*
+						document.write(j%10+" ");
+					document.write("<br>");*/
+				}
+			}
+			document.getElementById("result").innerHTML = HTML;
+
+		}			
+	</script>
+	
+</head>
+<body>
+<div>
+	<div>
+		<input type="text" id ="number"></input>
+
+		<button onclick="draw();">Vẽ tam giác	</button>
+	</div>
+
+	<div id="result">
+		
+	</div>
+</div>
+</body>
+</html>

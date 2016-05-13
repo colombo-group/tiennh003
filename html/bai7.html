@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bai 7</title>
+
+	<style type="text/css">
+		#calendar-container{
+    		padding: 10px;
+   			width: 230px;
+    		height: 220px;
+    		text-align: center;
+    		margin: auto; 
+    		border: 1px solid #eee;
+    		border-radius: 10px;
+    		font-size: 16px;
+    		font-family: Arial;
+   	 		background-color: #FFFEBE;
+		}
+
+		#calendar-container>div{
+    		padding: 0;
+    		margin-bottom: 10px;
+		}
+
+		#calendar-month-year{
+    		margin: 5px;
+		}
+
+		#calendar-header{
+			border: solid 1px #d3d3d3;
+		} 
+
+		#calendar-dates>table>tr>td{
+    		padding: 5px;
+    		border: solid 1px #d3d3d3;
+		}
+
+		.today {
+			background-color: #0EEF5E;
+		}
+
+	</style>
+
+	<script type="text/javascript">	
+		window.onload = function(){
+    var d = new Date();
+    //alert(d.toDateString()); Fri May 13 2016
+    var month_name = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    var day = d.getDate();
+    //alert(day); 13
+    var month = d.getMonth(); 
+    //alert(month); 4  
+    var year = d.getFullYear(); 
+    //alert(year); 2016
+    var first_date = month_name[month] + " " + 1 + " " + year;
+    //alert(first_date); May 1 2016
+    var tmp = new Date(first_date).toDateString();
+    //alert(tmp); Sun May 1 2016
+    var first_day = tmp.substring(0, 3);    
+    //alert(first_day); Sun
+    var day_name = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    var day_no = day_name.indexOf(first_day);   
+    //alert(day_no); 0
+    var days = new Date(year, month+1, 0).getDate();    
+    //alert(days); 31
+
+    document.getElementById("calendar-month-year").innerHTML = month_name[month]+" "+year;
+
+    var calendar = get_calendar(day_no, days, day);
+    document.getElementById("calendar-dates").appendChild(calendar);
+
+    document.getElementsByTagName("td")[day+6].setAttribute("class", "today"); 
+}
+
+function get_calendar(day_no, days, day){
+
+    var table = document.createElement('table');
+    var tr = document.createElement('tr');
+    
+    //row for the day letters
+    for(var c=0; c<=6; c++){
+        var td = document.createElement('td');
+        var day_name2 = ['Su','M','Tu','W','Th','F','Sa'];
+        td.innerHTML = day_name2[c];
+        tr.appendChild(td);
+    }
+    table.appendChild(tr);
+    
+    //create 2nd row
+    tr = document.createElement('tr');
+    var c;
+    for(c=0; c<=6; c++){
+        if(c == day_no){
+            break;
+        }
+        var td = document.createElement('td');
+        td.innerHTML = "";
+        tr.appendChild(td);
+    }
+    
+    var count = 1;
+    for(; c<=6; c++){
+        var td = document.createElement('td');
+        td.innerHTML = count;
+        count++;
+        tr.appendChild(td);
+    }
+    table.appendChild(tr);
+    
+    //rest of the date rows
+    for(var r=3; r<=7; r++){
+        tr = document.createElement('tr');
+        for(var c=0; c<=6; c++){
+            if(count > days){
+                table.appendChild(tr);
+                return table;
+            }
+            var td = document.createElement('td');
+            td.innerHTML = count;
+            count++;
+            tr.appendChild(td);
+        }
+        table.appendChild(tr);
+    }
+    
+	return table;
+
+}
+	</script>
+	
+</head>
+<body>
+<div id="calendar-container">
+            <div id="calendar-header">
+                <span id="calendar-month-year"></span>
+            </div>
+            <div id="calendar-dates">
+            </div>
+        </div>
+</body>
+</html>
